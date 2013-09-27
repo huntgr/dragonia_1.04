@@ -126,7 +126,7 @@ class mage:
         self.xp = 0
         self.lvl = 1
     def f_displayStats(self):
-        print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ","\nLevel: ",self.lvl, self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
+        print "Class: ", self.cls, "\nName: ", self.name, "\nLevel: ",self.lvl,"\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
     def f_abilities(self):
         print "Fireball(1).  This ability does {0} to {1} damage.\n".format(self.intellect*2,self.intellect*7)
         print "Barrier(2). This ability creates a magical shield that absorbs {0} to {1} damage.".format(self.intellect+(self.wisdom/2),(self.intellect+(self.wisdom/2))*2)
