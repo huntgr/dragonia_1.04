@@ -229,6 +229,7 @@ class warrior:
     
     def f_ability1(self):
     	self.tactics = 3
+    	self.damage = 0;
     	print "You prepare your self for battle!"
     #def f_ability2(self):
     def f_health(self):
