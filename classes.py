@@ -261,6 +261,7 @@ class warrior:
     			furious_bar.append(temp_damage)
     	damage += furious_bar[0] + furious_bar[1] + furious_bar[2]
     	self.damage = damage
+    	print "Primed for battle..."
     	print "Your furious barrage of blows deal {0}, {1}, and {2} damage".format(furious_bar[0],furious_bar[1],furious_bar[2])
     		
     def f_health(self):
