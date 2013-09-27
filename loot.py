@@ -3,10 +3,10 @@ import sys
 import time
 def f_ogre_loot(player):
     rand = random.randrange(0,100)
-    if rand <= 10:
+    if rand <= 5:
         player.f_sword()
         print "\nAfter defeating the Ogre you find a Sword.\n"
-    elif rand > 10 and rand <= 40:
+    elif rand > 5 and rand <= 40:
         player.f_belt()
         print "\nAfter defeating the Ogre you find a Belt.\n"
     elif rand > 40 and rand <= 60:
@@ -18,10 +18,10 @@ def f_ogre_loot(player):
 
 def f_snake_loot(player):
     rand = random.randrange(0,100)
-    if rand <= 10:
+    if rand <= 5:
         player.f_sword()
         print "\nAfter defeating the Giant Snake you find a Sword.\n"
-    elif rand > 10 and rand <= 40:
+    elif rand > 5 and rand <= 40:
         player.f_belt()
         print "\nAfter defeating the Giant Snake you find a Belt.\n"
     elif rand > 40 and rand <= 60:
@@ -33,10 +33,10 @@ def f_snake_loot(player):
 
 def f_gargoyle_loot(player):
     rand = random.randrange(0,100)
-    if rand <= 10:
+    if rand >= 0 and rand <= 30:
         player.f_sword()
         print "\nAfter defeating the Gargoyle you find a Sword.\n"
-    elif rand > 10 and rand <= 40:
+    elif rand > 30 and rand <= 40:
         player.f_belt()
         print "\nAfter defeating the Gargoyle you find a Belt.\n"
     elif rand > 40 and rand <= 60:
