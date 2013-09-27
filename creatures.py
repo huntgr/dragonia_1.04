@@ -21,6 +21,7 @@ class cyclops:
         elif ability == 1:
             damage = 0
             self.last = 1
+            self.damage = 0
             print "The cyclops is disoriented and just looks at you funny"
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
@@ -85,22 +86,24 @@ class ogre:
             if self.last == 1:
                 damage = random.randrange(17,30)*3
                 miss = self.miss + 1
+                self.last = 0
                 print "The Ogre smashes you to the ground with full force!"
             else:
                 damage = random.randrange(17,30)
                 print "The Ogre takes a swing with his club!"
-            self.last = 0
+                self.last = 0
         elif ability == 1 and self.last !=1:
             damage = 0
             self.last = 1
+            self.damage = 0
             print "The ogre picks you up and prepares to slam you to the ground"
         else:
             damage = random.randrange(17,30)
             print "The Ogre takes a swing with his club!"
-        if miss <= self.miss:
+        if miss <= self.miss and ability != 1:
             self.damage = 0
             print "The ogre MISSES you completely!"
-        elif crit ==10:
+        elif crit ==10 and ability != 1:
             crit = damage*2
             self.damage = crit
             print "The ogre CRITS you for {0} damage".format(self.damage)
@@ -159,6 +162,7 @@ class gargoyle:
             self.last = 1
             self.stamina += 5
             self.health += 50
+            self.damage = 0
             print "The gargoyle turns to stone, increasing his health by 50"
         else:
             damage = random.randrange(30,45)
@@ -220,6 +224,7 @@ class dragon:
         elif ability == 1 and self.last !=1:
             damage = 0
             self.last = 1
+            self.damage = 0
             print "The Dragon spews tar all over your body...un oh"
         else:
             damage = random.randrange(10,80)
@@ -312,6 +317,7 @@ class giant_snake:
         elif ability == 1 and self.last !=1 and self.counter == 2:
             damage = 0
             self.last = 1
+            self.damage = 0
             print "The Giant Snake injects you with poison"
         else:
             damage = random.randrange(17,30)
