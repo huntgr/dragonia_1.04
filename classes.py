@@ -104,8 +104,6 @@ class warlock:
     def f_legendary_weapon(self):
         self.intellect += 100
 
-
-
 class mage:
     def __init__(self,name):
         self.cls = 'mage'
@@ -178,7 +176,9 @@ class mage:
         self.intellect += 45
     def f_legendary_weapon(self):
         self.intellect += 100
-               
+    def f_eye(self):
+        self.stamina += 50
+            
 class warrior:
     def __init__(self,name):
         self.cls = 'warrior'
@@ -230,9 +230,12 @@ class warrior:
     def f_ability1(self):
     	self.tactics = 3
     	print "You prepare your self for battle!"
+<<<<<<< HEAD
     
     #def f_ability2(self):
     	
+=======
+>>>>>>> 87287f70e53f67f71dbe704a343e8e380823360d
     
     def f_health(self):
         print "You have {0} health remaining".format(self.health)
@@ -259,6 +262,8 @@ class warrior:
         self.strength += 95
     def f_legendary_weapon(self):
         self.strength += 200
+    def f_eye(self):
+        self.stamina += 50
 
 class cleric:
     def __init__(self,name):
@@ -358,3 +363,5 @@ class cleric:
     def f_legendary_weapon(self):
         self.strength += 100
         self.intellect += 75
+    def f_eye(self):
+        self.stamina += 50

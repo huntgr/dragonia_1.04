@@ -13,11 +13,19 @@ class cyclops:
         self.target = 'unknown'
         self.xp = 175
     def f_ability0(self):
-        ability = random.randrange(0,1)
+        ability = random.randrange(0,2)
         if ability == 0:
             damage = random.randrange(30,45)
+<<<<<<< HEAD
         else:
             damage = 0
+=======
+            self.last = 0
+            print "The cyclops smashes you with his fist"
+        elif ability == 1:
+            damage = 0
+            self.last = 1
+>>>>>>> 87287f70e53f67f71dbe704a343e8e380823360d
             print "The cyclops is disoriented and just looks at you funny"
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
@@ -35,9 +43,9 @@ class cyclops:
         print "The cyclops has {0} health remaining".format(self.health)
     def f_display(self):
         print """You enter a room filled with a foul stench.
-            A cyclops smells your flesh...
-            'ME HUNGRY' ME EAT YOU NOW'
-            Prepare yourself for a fight!"""
+              A cyclops smells your flesh...
+              'ME HUNGRY' ME EAT YOU NOW'
+              Prepare yourself for a fight!"""
         print """
             _......._
         .-'.'.'.'.'.'.`-.
@@ -68,13 +76,30 @@ class ogre:
         self.stamina = 30
         self.damage = 0
         self.miss = 20
+        self.last = -1
         self.dict = ['SMASHES','HITS','CRUSHES','OBLITERATES','SCRAPES','BARELY HITS','CRITS','misses']
         self.target = 'unknown'
         self.xp = 75
     def f_ability0(self):
-        damage = random.randrange(17,30)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
+        ability = random.randrange(0,2)
+        if ability == 0 or self.last == 1:
+            if self.last == 1:
+                damage = random.randrange(17,30)*3
+                miss = self.miss + 1
+                print "The Ogre smashes you to the ground with full force!"
+            else:
+                damage = random.randrange(17,30)
+                print "The Ogre takes a swing with his club!"
+            self.last = 0
+        elif ability == 1 and self.last !=1:
+            damage = 0
+            self.last = 1
+            print "The ogre picks you up and prepares to slam you to the ground"
+        else:
+            damage = random.randrange(17,30)
+            print "The Ogre takes a swing with his club!"
         if miss <= self.miss:
             self.damage = 0
             print "The ogre MISSES you completely!"
@@ -89,8 +114,8 @@ class ogre:
         print "The ogre has {0} health remaining".format(self.health)
     def f_display(self):
         print """An ogre is sleeping in the next room.
-        He appears to be surrounded by bones from those
-        who have attempted to kill him before."""
+              He appears to be surrounded by bones from those
+              who have attempted to kill him before."""
         print '''
                       |\  ,,,,,  /|
                       | \/_   _\/ |
@@ -117,13 +142,27 @@ class gargoyle:
         self.stamina = 45
         self.damage = 0
         self.miss = 5
+        self.last = -1
         self.dict = ['DECIMATES','HITS','CRUSHES','OBLITERATES','SCRAPES','BARELY HITS','CRITS','misses']
         self.target = 'unknown'
         self.xp = 150
     def f_ability0(self):
-        damage = random.randrange(30,45)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
+        ability = random.randrange(0,2)
+        if ability == 0:
+            damage = random.randrange(30,45)
+            print "The Gargoyle swipes you with his fierce claws!"
+            self.last = 0
+        elif ability == 1:
+            damage = 0
+            self.last = 1
+            self.stamina += 5
+            self.health += 50
+            print "The gargoyle turns to stone, increasing his health by 50"
+        else:
+            damage = random.randrange(30,45)
+            print "The Gargoyle swipes you with his fierce claws!"
         if miss <= self.miss:
             self.damage = 0
             print "The Gargoyle MISSES you completely!"
@@ -138,7 +177,7 @@ class gargoyle:
         print "The Gargoyle has {0} health remaining".format(self.health)
     def f_display(self):
         print """You enter the next room and a
-        Gargoyle guards a tomb.  I wonder whats inside?"""
+              Gargoyle guards a tomb.  I wonder whats inside?"""
         print """
                /|    /(_)\    |\                
              /' `\   \`,'/   /' `\              
@@ -159,13 +198,29 @@ class dragon:
         self.stamina = 100
         self.damage = 0
         self.miss = 7
+        self.last = -1
         self.dict = ['HITS','BITES','BURNS','DEVOURES','BREATHES FIRE','CRITS','MISSES']
         self.target = 'unknown'
         self.xp = 1000
     def f_ability0(self):
-        damage = random.randrange(1,80)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
+        ability = random.randrange(0,2)
+        if ability == 0:
+            if self.last == 1:
+                damage = random.randrange(10,80)*2
+                print "The tar ignites and you are engulfed in flames!"
+            else:
+                damage = random.randrange(10,80)
+                print "The Dragon attacks you!"
+            last = 0
+        elif ability == 1 and self.last !=1:
+            damage = 0
+            self.last = 1
+            print "The Dragon spews tar all over your body...un oh"
+        else:
+            damage = random.randrange(10,80)
+            print "The Dragon attacks you!"
         if miss <= self.miss:
             self.damage = 0
             print "The Dragon MISSES you completely!"
@@ -180,8 +235,8 @@ class dragon:
         print "The Dragon has {0} health remaining".format(self.health)
     def f_display(self):
         print """You happen upon a dragon's lair.
-        The gold and spoils he is guarding are beyond
-        your wildest dreams.  If you can manage to defeat him..."""
+              The gold and spoils he is guarding are beyond
+              your wildest dreams.  If you can manage to defeat him..."""
         print """
                                              ..
                                      ,o""'o
@@ -228,13 +283,33 @@ class giant_snake:
         self.stamina = 25
         self.damage = 0
         self.miss = 15
+        self.last = -1
+        self.counter = 2
         self.dict = ['HITS','BITES','KNICKS','DEVOURES','POISONS','CRITS','MISSES']
         self.target = 'unknown'
         self.xp = 65
     def f_ability0(self):
-        damage = random.randrange(20,30)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
+        ability = random.randrange(0,2)
+        if ability == 0 or self.last == 1:
+            if self.last == 1 and self.counter > 1:
+                damage = random.randrange(17,30) + 10
+                print "The Giant Snake attacks! His poison does an additional 10 damage."
+                self.counter -= 1
+                if self.counter == 0:
+                    self.counter = 2
+            else:
+                damage = random.randrange(17,30)
+                print "The Giant Snake attacks!"
+            self.last = 0
+        elif ability == 1 and self.last !=1 and self.counter == 2:
+            damage = 0
+            self.last = 1
+            print "The Giant Snake injects you with poison"
+        else:
+            damage = random.randrange(17,30)
+            print "The Giant Snake attacks!"
         if miss <= self.miss:
             self.damage = 0
             print "The giant snake MISSES you completely!"
@@ -249,7 +324,7 @@ class giant_snake:
         print "The giant snake has {0} health remaining".format(self.health)
     def f_display(self):
         print """You enter the next room and startle
-            a Giant Snake.  He attacks!"""
+              a Giant Snake.  He attacks!"""
         print '''
            ---_ ...... _/_ -    
           /  .      ./ .'*\ \    

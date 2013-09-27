@@ -3,6 +3,7 @@ import sys
 import time
 from loot import *
 from classes import *
+
 def abilities(player):
     print "Your abilities are: "
     player.f_abilities()
@@ -55,6 +56,8 @@ def f_damage(chosen_ability,enemy,player):
              f_gargoyle_loot(player)
          elif enemy.name == 'dragon':
              f_dragon_loot(player)
+         elif enemy.name == 'cyclops':
+             f_cyclops_loot(player)
          else:
              print "something bad happened"
          time.sleep(2)

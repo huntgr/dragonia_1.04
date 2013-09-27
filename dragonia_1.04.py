@@ -7,17 +7,6 @@ from commands import *
 from classes import *
 from creatures import *
 
-
-##def _reset():
-##    global chosen
-##    global _exit
-##    global no_enemy
-##    global enemies
-##    chosen = False
-##    no_enemy = True
-##    enemies = ['ogre','giant snake','ogre','giant snake','ogre','giant snake','gargoyle','dragon']
-##    _exit = False
-
 g_chosen = False
 g_exit = False
 g_running = True
@@ -25,8 +14,6 @@ g_count = 0
 g_no_enemy = True
 g_enemies = ['ogre','giant snake','ogre','cyclops','giant snake','ogre','giant snake','gargoyle','dragon']
 g_error_messages = ["Robin...no.","You think I'm going to listen to you?","um...what?","Yeah no clue what you're telling me to do.","Stop touching me there.","Will you attack already?","Glares at you.","Siiiiigh.", "You want me to do WHAT?","Sorry I don't roll that way","I would if I could.","NO..NO NO NO NO..NONONONONONONON!"]
-
-
 
 def main():
     global g_exit
@@ -46,7 +33,11 @@ def main():
         g_chosen = False
         g_no_enemy = True
         g_enemies = ['ogre','giant snake','ogre','cyclops','giant snake','ogre','giant snake','gargoyle','dragon']
+<<<<<<< HEAD
         print g_enemies
+=======
+        #print g_enemies
+>>>>>>> 87287f70e53f67f71dbe704a343e8e380823360d
         while g_chosen != True:
             g_exit = False
             
@@ -114,6 +105,8 @@ def main():
                             enemy = gargoyle()
                         elif g_enemies[pick_enemy] == 'dragon':
                             enemy = dragon()
+                        elif g_enemies[pick_enemy] == 'cyclops':
+                            enemy = cyclops()
                         enemy.f_display()
                         g_no_enemy = False
                 if player.dead == 1:
@@ -126,7 +119,9 @@ def main():
                         if g_enemies != []:
                             g_enemies.pop(pick_enemy)
                 elif inpt == 'abilities':
-                    f_abilities(player)
+                    #f_abilities(player)
+                    print "Your abilities are: "
+                    player.f_abilities()
                 elif inpt == 'dance':
                     f_dance()
                 elif inpt == 'exit':
