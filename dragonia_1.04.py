@@ -23,7 +23,9 @@ def main():
     global g_no_enemy
     global g_enemies
     global g_error_messages
-    
+
+    #enemy = cyclops()
+    #enemy.f_display()
     while g_running != False:
         print "Welcome to Dragonia."
         print "\nPlease choose your class: Mage (1), Warrior (2), Cleric(3), Warlock(4)"
@@ -83,7 +85,7 @@ def main():
             try:
                 if g_no_enemy == True:
                     if g_enemies == []:
-                        print "You efforts have been valient, victory is yours!"
+                        print "You efforts have been valient, victory is yours!\n"
                         f_reset()
                         g_exit = True
                         player.dead = 1
