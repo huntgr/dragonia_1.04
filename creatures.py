@@ -82,7 +82,7 @@ class ogre:
         if ability == 0 or self.last == 1:
             if self.last == 1:
                 damage = random.randrange(17,30)*3
-                miss = 0
+                miss = self.miss + 1
                 print "The Ogre smashes you to the ground with full force!"
             else:
                 damage = random.randrange(17,30)
