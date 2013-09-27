@@ -184,6 +184,7 @@ class warrior:
         self.health = self.stamina*10
         self.shield = 0
         self.damage = 0
+        self.tactics = 0
         self.miss = 100/self.strength
         self.crit = self.strength/1.5
         self.dict = ['SLICES','WOUNDS','HITS','GLANCES','DEMOLISHES','CRITS','MISSES']
@@ -194,10 +195,19 @@ class warrior:
     def f_displayStats(self):
         print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
     def f_abilities(self):
-        print "Heroic Slash(1).  This ability does {0} to {1} damage".format(self.strength,self.strength*4)
+        print "Heroic Slash(1).  This ability does {0} to {1} damage".format(self.strength*2,self.strength*4)
+        print "Combat Tactics(2). This ability boosts your damage output and crit chance for three turns."
     def f_ability0(self):
-        damage = random.randrange(self.strength*2,self.strength*4)
-        crit = random.randrange(1,100)
+    	if(self.tactics > 0):
+    		bonus_damage = round(self.strength*1.5, 0)
+    		crit_cap = 85
+    		self.tactics -= 1
+    		print "Primed for battle..."
+    	else:
+    		bonus_damage = 0
+    		crit_cap = 100
+        damage = random.randrange(self.strength*2,self.strength*4)+bonus_damage
+        crit = random.randrange(1,crit_cap)
         miss = random.randrange(1,100)
         if miss <= self.miss:
             self.damage = 0
@@ -209,8 +219,9 @@ class warrior:
             self.damage = damage
             print 'Your Heroic Slash {0} for {1} damage.'.format(self.dict[random.randrange(0,5)],self.damage)
     
-    #def _ability1(self):
-    	
+    def f_ability1(self):
+    	self.tactics = 3
+    	print "You prepare your self for battle!"
     
     def f_health(self):
         print "You have {0} health remaining".format(self.health)
@@ -237,7 +248,6 @@ class warrior:
         self.strength += 95
     def f_legendary_weapon(self):
         self.strength += 200
-
 class cleric:
     def __init__(self,name):
         self.cls = 'cleric'
