@@ -3,6 +3,7 @@ import sys
 import time
 from loot import *
 from classes import *
+
 def abilities(player):
     print "Your abilities are: "
     player.f_abilities()
