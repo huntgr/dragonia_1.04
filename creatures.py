@@ -16,8 +16,6 @@ class cyclops:
         ability = random.randrange(0,2)
         if ability == 0:
             damage = random.randrange(30,45)
-        else:
-            damage = 0
             self.last = 0
             print "The cyclops smashes you with his fist"
         elif ability == 1:

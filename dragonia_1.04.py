@@ -33,11 +33,8 @@ def main():
         g_chosen = False
         g_no_enemy = True
         g_enemies = ['ogre','giant snake','ogre','cyclops','giant snake','ogre','giant snake','gargoyle','dragon']
-<<<<<<< HEAD
-        print g_enemies
-=======
         #print g_enemies
->>>>>>> 87287f70e53f67f71dbe704a343e8e380823360d
+        #print g_enemies
         while g_chosen != True:
             g_exit = False
             

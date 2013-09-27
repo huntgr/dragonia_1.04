@@ -230,13 +230,7 @@ class warrior:
     def f_ability1(self):
     	self.tactics = 3
     	print "You prepare your self for battle!"
-<<<<<<< HEAD
-    
     #def f_ability2(self):
-    	
-=======
->>>>>>> 87287f70e53f67f71dbe704a343e8e380823360d
-    
     def f_health(self):
         print "You have {0} health remaining".format(self.health)
     def f_level(self):
