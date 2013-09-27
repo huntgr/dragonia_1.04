@@ -16,16 +16,13 @@ class cyclops:
         ability = random.randrange(0,2)
         if ability == 0:
             damage = random.randrange(30,45)
-<<<<<<< HEAD
         else:
             damage = 0
-=======
             self.last = 0
             print "The cyclops smashes you with his fist"
         elif ability == 1:
             damage = 0
             self.last = 1
->>>>>>> 87287f70e53f67f71dbe704a343e8e380823360d
             print "The cyclops is disoriented and just looks at you funny"
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
@@ -67,6 +64,7 @@ class cyclops:
         `.  .'      `.  /
           \           .'
            `-..___..-`
+
            """
         
 class ogre:

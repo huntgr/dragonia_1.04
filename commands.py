@@ -20,8 +20,10 @@ def f_damage(chosen_ability,enemy,player):
      print ""
      #player._ability0()
      eval("player."+chosen_ability)
+     time.sleep(0.5)
      enemy.health -= player.damage
      enemy.f_ability0()
+     time.sleep(0.5)
      if(player.shield):
          if(player.shield < enemy.damage):
              enemy.damage -= player.shield
@@ -31,7 +33,9 @@ def f_damage(chosen_ability,enemy,player):
              enemy.damage = 0
      player.health -= enemy.damage
      player.f_health()
+     time.sleep(0.5)
      enemy.f_health()
+     time.sleep(0.5)
      print ""
      if enemy.health <= 0 and player.health > 0:
          print "\nThe enemy has been defeated! WELL DONE!  You rest for a bit and regain some health"
@@ -41,13 +45,17 @@ def f_damage(chosen_ability,enemy,player):
          if player.health > (player.stamina*10):
              player.health = player.stamina*10
          player.f_health()
+         time.sleep(0.5)
          player.xp += enemy.xp
          if player.xp >= player.lvl * player.lvl * 65:
              player.f_level()
+             time.sleep(0.75)
              player.f_displayStats()
+             time.sleep(0.75)
              player.f_health()
+             time.sleep(0.75)
              player.f_abilities()
-             time.sleep(2)
+             time.sleep(1)
          if enemy.name == 'ogre':
              f_ogre_loot(player)
          elif enemy.name == 'snake':
@@ -60,7 +68,7 @@ def f_damage(chosen_ability,enemy,player):
              f_cyclops_loot(player)
          else:
              print "something bad happened"
-         time.sleep(2)
+         time.sleep(1)
      elif player.health <= 0:
          print "\nYou have been slain! Better luck next time"
          print "...GAMEOVER..."
