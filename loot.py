@@ -68,6 +68,28 @@ def f_gargoyle_loot(player):
     player.f_displayStats()
     time.sleep(2)
 
+def f_cyclops_loot(player):
+    rand = random.randrange(0,100)
+    if rand <= 10:
+        player.f_sword()
+        print "\nAfter defeating the Cyclops you find a Sword.\n"
+    elif rand > 10 and rand <= 40:
+        player.f_belt()
+        print "\nAfter defeating the Cyclops you find a Belt.\n"
+    elif rand > 40 and rand <= 60:
+        player.f_offhand()
+        print "\nAfter defeating the Cyclops you find an Offhand.\n"
+    elif rand > 70 and rand <= 95:
+        player.f_trinket()
+        print "\nAfter defeating the Cyclops you find an extremely rare Trinket.\n"
+    elif rand > 95 and rand <= 100:
+        player.f_eye()
+        print "\nAfter defeating the Cyclops you tear out his eye and wear it as a medallion.\n"
+    else:
+        print "\nAfter defeating the Cyclops you find nothing but junk\n"
+    player.f_displayStats()
+    time.sleep(2)
+    
 def f_dragon_loot(player):
     rand = random.randrange(0,100)
     if rand <= 10:

@@ -97,8 +97,8 @@ class warlock:
         self.intellect += 45
     def f_legendary_weapon(self):
         self.intellect += 100
-
-
+    def f_eye(self):
+        self.stamina += 50
 
 class mage:
     def __init__(self,name):
@@ -170,7 +170,9 @@ class mage:
         self.intellect += 45
     def f_legendary_weapon(self):
         self.intellect += 100
-               
+    def f_eye(self):
+        self.stamina += 50
+            
 class warrior:
     def __init__(self,name):
         self.cls = 'warrior'
@@ -248,6 +250,9 @@ class warrior:
         self.strength += 95
     def f_legendary_weapon(self):
         self.strength += 200
+    def f_eye(self):
+        self.stamina += 50
+
 class cleric:
     def __init__(self,name):
         self.cls = 'cleric'
@@ -343,3 +348,5 @@ class cleric:
     def f_legendary_weapon(self):
         self.strength += 100
         self.intellect += 75
+    def f_eye(self):
+        self.stamina += 50
