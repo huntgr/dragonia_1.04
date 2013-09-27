@@ -1,3 +1,63 @@
+import random
+import sys
+import time
+class cyclops:
+    def __init__(self):
+        self.name = 'cyclops'
+        self.health = 500
+        self.stamina = 50
+        self.damage = 0
+        self.miss = 25
+        self.last = -1
+        self.dict = ['SMASHES','HITS','CRUSHES','OBLITERATES','SCRAPES','BARELY HITS','CRITS','misses']
+        self.target = 'unknown'
+        self.xp = 175
+    def f_ability0(self):
+        ability = random.randrange(0,1)
+        if ability == 0:
+            damage = random.randrange(30,45)
+        crit = random.randrange(1,10)
+        miss = random.randrange(1,100)
+        if miss <= self.miss:
+            self.damage = 0
+            print "The cyclops MISSES you completely!"
+        elif crit >=9:
+            crit = damage*2
+            self.damage = crit
+            print "The cyclops CRITS you for {0} damage".format(self.damage)
+        else:
+            self.damage = damage
+            print "The cyclops {0} for {1} damage".format(self.dict[random.randrange(0,6)],self.damage)
+    def f_health(self):
+        print "The cyclops has {0} health remaining".format(self.health)
+    def f_display(self):
+        print """You enter a room filled with a foul stench.
+            A cyclops smells your flesh...
+            'ME HUNGRY' ME EAT YOU NOW'
+            Prepare yourself for a fight!"""
+        print """
+            _......._
+        .-'.'.'.'.'.'.`-.
+      .'.'.'.'.'.'.'.'.'.`.
+     /.'.'               '.\
+     |.'    _.--...--._     |
+     \    `._.-.....-._.'   /
+     |     _..- .-. -.._   |
+  .-.'    `.   ((@))  .'   '.-.
+ ( ^ \      `--.   .-'     / ^ )
+  \  /         .   .       \  /
+  /          .'     '.  .-    \
+ ( _.\    \ (_`-._.-'_)    /._\)
+  `-' \   ' .--.          / `-'
+      |  / /|_| `-._.'\   |
+      |   |       |_| |   /-.._
+  _..-\   `.--.______.'  |
+       \       .....     |
+        `.  .'      `.  /
+          \           .'
+           `-..___..-`
+           """
+        
 class ogre:
     def __init__(self):
         self.name = 'ogre'
@@ -8,7 +68,7 @@ class ogre:
         self.dict = ['SMASHES','HITS','CRUSHES','OBLITERATES','SCRAPES','BARELY HITS','CRITS','misses']
         self.target = 'unknown'
         self.xp = 75
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange(17,30)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
@@ -22,10 +82,12 @@ class ogre:
         else:
             self.damage = damage
             print "The ogre {0} for {1} damage".format(self.dict[random.randrange(0,6)],self.damage)
-    def _health(self):
+    def f_health(self):
         print "The ogre has {0} health remaining".format(self.health)
-    def _display(self):
-        print "An ogre is sleeping in the next room.  He appears to be surrounded by bones from those who have attempted to kill him before."
+    def f_display(self):
+        print """An ogre is sleeping in the next room.
+        He appears to be surrounded by bones from those
+        who have attempted to kill him before."""
         print '''
                       |\  ,,,,,  /|
                       | \/_   _\/ |
@@ -55,7 +117,7 @@ class gargoyle:
         self.dict = ['DECIMATES','HITS','CRUSHES','OBLITERATES','SCRAPES','BARELY HITS','CRITS','misses']
         self.target = 'unknown'
         self.xp = 150
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange(30,45)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
@@ -69,10 +131,11 @@ class gargoyle:
         else:
             self.damage = damage
             print "The Gargoyle {0} for {1} damage".format(self.dict[random.randrange(0,6)],self.damage)
-    def _health(self):
+    def f_health(self):
         print "The Gargoyle has {0} health remaining".format(self.health)
-    def _display(self):
-        print "You enter the next room and a Gargoyle guards a tomb.  I wonder whats inside?"
+    def f_display(self):
+        print """You enter the next room and a
+        Gargoyle guards a tomb.  I wonder whats inside?"""
         print """
                /|    /(_)\    |\                
              /' `\   \`,'/   /' `\              
@@ -96,7 +159,7 @@ class dragon:
         self.dict = ['HITS','BITES','BURNS','DEVOURES','BREATHES FIRE','CRITS','MISSES']
         self.target = 'unknown'
         self.xp = 1000
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange(1,80)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
@@ -110,10 +173,12 @@ class dragon:
         else:
             self.damage = damage
             print "The Dragon {0} for {1} damage".format(self.dict[random.randrange(0,6)],self.damage)
-    def _health(self):
+    def f_health(self):
         print "The Dragon has {0} health remaining".format(self.health)
-    def _display(self):
-        print "You happen upon a dragon's lair.  The gold and spoils he is guarding are beyond your wildest dreams.  If you can manage to defeat him..."
+    def f_display(self):
+        print """You happen upon a dragon's lair.
+        The gold and spoils he is guarding are beyond
+        your wildest dreams.  If you can manage to defeat him..."""
         print """
                                              ..
                                      ,o""'o
@@ -163,7 +228,7 @@ class giant_snake:
         self.dict = ['HITS','BITES','KNICKS','DEVOURES','POISONS','CRITS','MISSES']
         self.target = 'unknown'
         self.xp = 65
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange(20,30)
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
@@ -177,10 +242,11 @@ class giant_snake:
         else:
             self.damage = damage
             print "The giant snake {0} for {1} damage".format(self.dict[random.randrange(0,6)],self.damage)
-    def _health(self):
+    def f_health(self):
         print "The giant snake has {0} health remaining".format(self.health)
-    def _display(self):
-        print "You enter the next room and startle a Giant Snake.  He attacks!"
+    def f_display(self):
+        print """You enter the next room and startle
+            a Giant Snake.  He attacks!"""
         print '''
            ---_ ...... _/_ -    
           /  .      ./ .'*\ \    

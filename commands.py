@@ -1,15 +1,26 @@
-def _abilities():
+import random
+import sys
+import time
+from loot import *
+from classes import *
+def abilities(player):
     print "Your abilities are: "
-    player._abilities()
+    player.f_abilities()
     sys.stdout.flush()
 
-def _damage(chosen_ability):
-     global _exit
+def f_damage(chosen_ability,enemy,player):
+     global g_exit
+     global g_chosen
+     global g_running
+     global g_count
+     global g_no_enemy
+     global g_enemies
+     global g_error_messages
      print ""
      #player._ability0()
      eval("player."+chosen_ability)
      enemy.health -= player.damage
-     enemy._ability0()
+     enemy.f_ability0()
      if(player.shield):
          if(player.shield < enemy.damage):
              enemy.damage -= player.shield
@@ -18,8 +29,8 @@ def _damage(chosen_ability):
              player.shield -= enemy.damage
              enemy.damage = 0
      player.health -= enemy.damage
-     player._health()
-     enemy._health()
+     player.f_health()
+     enemy.f_health()
      print ""
      if enemy.health <= 0 and player.health > 0:
          print "\nThe enemy has been defeated! WELL DONE!  You rest for a bit and regain some health"
@@ -28,51 +39,55 @@ def _damage(chosen_ability):
          player.health = player.health + enemy.stamina*2
          if player.health > (player.stamina*10):
              player.health = player.stamina*10
-         player._health()
+         player.f_health()
          player.xp += enemy.xp
          if player.xp >= player.lvl * player.lvl * 65:
-             player._level()
-             player._displayStats()
-             player._health()
-             player._abilities()
+             player.f_level()
+             player.f_displayStats()
+             player.f_health()
+             player.f_abilities()
              time.sleep(2)
          if enemy.name == 'ogre':
-             _ogre_loot(player)
+             f_ogre_loot(player)
          elif enemy.name == 'snake':
-             _snake_loot(player)
+             f_snake_loot(player)
          elif enemy.name == 'gargoyle':
-             _gargoyle_loot(player)
+             f_gargoyle_loot(player)
          elif enemy.name == 'dragon':
-             _dragon_loot(player)
+             f_dragon_loot(player)
          else:
              print "something bad happened"
          time.sleep(2)
      elif player.health <= 0:
          print "\nYou have been slain! Better luck next time"
          print "...GAMEOVER..."
-         _reset()
-         _exit = True
+         player.dead = 1
+         f_reset()
+         g_exit = True
     
-def _attack(enemy):
+def f_attack(player,enemy):
     print "\nWhat would you like to use?"
-    player._abilities()
+    player.f_abilities()
     inpute = raw_input(">>> ")
     if int(inpute) == 1:
-        _damage("_ability0()")
+        f_damage("f_ability0()",enemy,player)
     elif int(inpute) == 2:
-        _damage("_ability1()")
+        f_damage("f_ability1()",enemy,player)
     sys.stdout.flush()
             
-def _dance():
+def f_dance():
     print "\nYour character breaks into dance. 'This is awkward'"
     sys.stdout.flush()
 
-def _reset():
-    global chosen
-    global _exit
-    global no_enemy
-    global enemies
-    chosen = False
-    no_enemy = True
-    enemies = ['ogre','giant snake','ogre','giant snake','ogre','giant snake','gargoyle','dragon']
-    _exit = False
+def f_reset():
+    global g_exit
+    global g_chosen
+    global g_running
+    global g_count
+    global g_no_enemy
+    global g_enemies
+    global g_error_messages
+    g_chosen = False
+    g_no_enemy = True
+    g_enemies = ['ogre','giant snake','ogre','giant snake','ogre','giant snake','gargoyle','dragon']
+    g_exit = False

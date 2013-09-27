@@ -1,6 +1,10 @@
+import random
+import sys
+import time
 class warlock:
     def __init__(self,name):
         self.cls = 'warlock'
+        self.dead = 0
         self.name = name
         self.stamina = 14
         self.wisdom = 15
@@ -17,14 +21,14 @@ class warlock:
         self.abilities = ['Power Siphon','Entropic Assault']
         self.xp = 0
         self.lvl = 1
-    def _displayStats(self):
+    def f_displayStats(self):
         print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
-    def _abilities(self):
+    def f_abilities(self):
         print "Power Siphon(1).  This ability does {0} to {1} damage".format((self.intellect+self.stamina*3/2),((self.intellect+self.stamina)*7/3))
         print "Heals you for a portion of damage dealt"
         print "Entropic Assault(2). This ability does {0} to {1} damage".format((self.intellect+self.wisdom+self.stamina)/2,(self.intellect+self.wisdom+self.stamina)*7/2)
         print "Consumes a portion of you current health. Even if you miss!"
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange(((self.intellect+self.stamina)*3/2),((self.intellect+self.stamina)*7/3))
         crit = random.randrange(1,100)
         miss = random.randrange(1,100)
@@ -45,7 +49,7 @@ class warlock:
             print 'Your Power Siphon {0} for {1} damage.'.format(self.dict[random.randrange(0,4)],self.damage)
             print 'and heals you for {0}.'.format((damage/6)+heal_control)
             #print '{0},{1}'.format(heal_control,self.health)
-    def _ability1(self):
+    def f_ability1(self):
         damage = random.randrange((self.intellect+self.wisdom+self.stamina)/2,(self.intellect+self.wisdom+self.stamina)*7/2)
         crit = random.randrange(1,100)
         miss = random.randrange(1,100)
@@ -68,9 +72,9 @@ class warlock:
             self.health -= sac_hp
             print "Your Entropic Assault deals {0} damage.".format(self.damage)
             print "{0} health consumed.".format(sac_hp)
-    def _health(self):
+    def f_health(self):
         print "You have {0} health remaining".format(self.health)
-    def _level(self):
+    def f_level(self):
         self.stamina += 6
         self.wisdom += 3
         self.intellect += 4
@@ -81,17 +85,17 @@ class warlock:
         self.crit = self.intellect
         self.lvl += 1
         print "\nYou've reached level {0}".format(self.lvl)
-    def _sword(self):
+    def f_sword(self):
         self.intellect += 30
-    def _offhand(self):
+    def f_offhand(self):
         self.stamina += 10
-    def _belt(self):
+    def f_belt(self):
         self.stamina += 2
-    def _cloak(self):
+    def f_cloak(self):
         self.stamina += 20
-    def _trinket(self):
+    def f_trinket(self):
         self.intellect += 45
-    def _legendary_weapon(self):
+    def f_legendary_weapon(self):
         self.intellect += 100
 
 
@@ -99,6 +103,7 @@ class warlock:
 class mage:
     def __init__(self,name):
         self.cls = 'mage'
+        self.dead = 0
         self.name = name
         self.stamina = 8
         self.wisdom = 19
@@ -115,12 +120,12 @@ class mage:
         self.abilities = ['Fireball']
         self.xp = 0
         self.lvl = 1
-    def _displayStats(self):
+    def f_displayStats(self):
         print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
-    def _abilities(self):
+    def f_abilities(self):
         print "Fireball(1).  This ability does {0} to {1} damage".format(self.intellect*2,self.intellect*7)
         print "Barrier(2). This ability creates a magical shield that absorbs {0} to {1} damage.".format(self.intellect+(self.wisdom/2),(self.intellect+(self.wisdom/2))*2)
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange(self.intellect*2,self.intellect*7)
         crit = random.randrange(1,100)
         miss = random.randrange(1,100)
@@ -133,16 +138,16 @@ class mage:
         else:
             self.damage = damage
             print 'Your Fireball {0} for {1} damage.'.format(self.dict[random.randrange(0,4)],self.damage)
-    def _ability1(self):
-    	player.damage = 0
+    def f_ability1(self):
+    	self.damage = 0
         shield = random.randrange(self.intellect+(self.wisdom/2),(self.intellect+(self.wisdom/2))*2)
         self.shield = shield
         print "You create a {0} point shield".format(shield)
         
-    def _health(self):
+    def f_health(self):
         print "You have {0} health and {1} shield remaining".format(self.health, self.shield)
         
-    def _level(self):
+    def f_level(self):
         self.stamina += 2
         self.wisdom += 4
         self.intellect += 9
@@ -153,22 +158,23 @@ class mage:
         self.crit = self.intellect
         self.lvl += 1
         print "\nYou've reached level {0}".format(self.lvl)
-    def _sword(self):
+    def f_sword(self):
         self.intellect += 30
-    def _offhand(self):
+    def f_offhand(self):
         self.stamina += 10
-    def _belt(self):
+    def f_belt(self):
         self.stamina += 2
-    def _cloak(self):
+    def f_cloak(self):
         self.stamina += 20
-    def _trinket(self):
+    def f_trinket(self):
         self.intellect += 45
-    def _legendary_weapon(self):
+    def f_legendary_weapon(self):
         self.intellect += 100
                
 class warrior:
     def __init__(self,name):
         self.cls = 'warrior'
+        self.dead = 0
         self.name = name
         self.stamina = 17
         self.wisdom = 7
@@ -185,11 +191,11 @@ class warrior:
         self.abilities = ['Heroic Slash']
         self.xp = 0
         self.lvl = 1
-    def _displayStats(self):
+    def f_displayStats(self):
         print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
-    def _abilities(self):
+    def f_abilities(self):
         print "Heroic Slash(1).  This ability does {0} to {1} damage".format(self.strength,self.strength*4)
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange(self.strength*2,self.strength*4)
         crit = random.randrange(1,100)
         miss = random.randrange(1,100)
@@ -206,9 +212,9 @@ class warrior:
     #def _ability1(self):
     	
     
-    def _health(self):
+    def f_health(self):
         print "You have {0} health remaining".format(self.health)
-    def _level(self):
+    def f_level(self):
         self.stamina += 6
         self.wisdom += 1
         self.intellect += 1
@@ -219,22 +225,23 @@ class warrior:
         self.crit = self.strength/1.5
         self.lvl += 1
         print "\nYou've reached level {0}".format(self.lvl)
-    def _sword(self):
+    def f_sword(self):
         self.strength += 30
-    def _offhand(self):
+    def f_offhand(self):
         self.strength += 15
-    def _belt(self):
+    def f_belt(self):
         self.stamina += 2
-    def _cloak(self):
+    def f_cloak(self):
         self.stamina += 20
-    def _trinket(self):
+    def f_trinket(self):
         self.strength += 95
-    def _legendary_weapon(self):
+    def f_legendary_weapon(self):
         self.strength += 200
 
 class cleric:
     def __init__(self,name):
         self.cls = 'cleric'
+        self.dead = 0
         self.name = name
         self.stamina = 15
         self.wisdom = 10
@@ -252,16 +259,16 @@ class cleric:
         self.abilities = ['Holy Blow']
         self.xp = 0
         self.lvl = 1
-    def _displayStats(self):
+    def f_displayStats(self):
         print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
-    def _abilities(self):
+    def f_abilities(self):
         print "Holy Blow(1).  This ability does {0} to {1} damage.".format(self.strength+self.intellect,(self.strength + self.intellect)*3)
         print "Devine Judgment(2). This ability does {0} to {1} damage.".format(self.wisdom*2, self.wisdom*5)
         print "You enter a state of devine empowerment" 
         print "adding addition effects to your next attack."
         print "Holy Blow will deal additional damage and Devine Judgment will heal you."
         print "   "
-    def _ability0(self):
+    def f_ability0(self):
         damage = random.randrange((self.strength + self.intellect)*2,(self.strength + self.intellect)*3)
         crit = random.randrange(1,100)
         miss = random.randrange(1,100)
@@ -278,7 +285,7 @@ class cleric:
             self.damage = damage
             print 'Your Holy Blow {0} for {1} damage.'.format(self.dict[random.randrange(0,5)],self.damage)
         
-    def _ability1(self):
+    def f_ability1(self):
     	damage = random.randrange(self.wisdom*2, self.wisdom*5)
     	crit = random.randrange(1,100)
     	miss = random.randrange(1,100)
@@ -299,9 +306,9 @@ class cleric:
     		self.damage = damage
     		print "Your Devine Judgment deals {0} damage.".format(self.damage)
     	
-    def _health(self):
+    def f_health(self):
         print "You have {0} health remaining".format(self.health)
-    def _level(self):
+    def f_level(self):
         self.stamina += 4
         self.wisdom += 3
         self.intellect += 3
@@ -312,17 +319,17 @@ class cleric:
         self.crit = (self.wisdom + self.intellect)/1.5
         self.lvl += 1
         print "\nYou've reached level {0}".format(self.lvl)
-    def _sword(self):
+    def f_sword(self):
         self.intellect += 30
-    def _offhand(self):
+    def f_offhand(self):
         self.strength += 15
-    def _belt(self):
+    def f_belt(self):
         self.stamina += 2
-    def _cloak(self):
+    def f_cloak(self):
         self.stamina += 20
-    def _trinket(self):
+    def f_trinket(self):
         self.strength += 45
         self.intellect += 45
-    def _legendary_weapon(self):
+    def f_legendary_weapon(self):
         self.strength += 100
         self.intellect += 75
