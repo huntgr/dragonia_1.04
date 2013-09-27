@@ -16,6 +16,9 @@ class cyclops:
         ability = random.randrange(0,1)
         if ability == 0:
             damage = random.randrange(30,45)
+        else:
+            damage = 0
+            print "The cyclops is disoriented and just looks at you funny"
         crit = random.randrange(1,10)
         miss = random.randrange(1,100)
         if miss <= self.miss:
