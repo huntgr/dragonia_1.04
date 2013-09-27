@@ -101,6 +101,8 @@ def main():
                             enemy = gargoyle()
                         elif g_enemies[pick_enemy] == 'dragon':
                             enemy = dragon()
+                        elif g_enemies[pick_enemy] == 'cyclops':
+                            enemy = cyclops()
                         enemy.f_display()
                         g_no_enemy = False
                 if player.dead == 1:
