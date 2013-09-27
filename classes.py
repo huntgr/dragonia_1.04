@@ -362,6 +362,7 @@ class cleric:
     def f_ability2(self):
     	damage = self.wisdom
     	wisdom_gain = 1
+    	heal_amt = round(self.wisdom*3.14, 0)
     	if (self.empowered):
     		wisdom_gain = 2
     		self.empowered = 0
@@ -369,7 +370,8 @@ class cleric:
     		widsom_gain = 1
     	self.damage = damage
     	self.wisdom += wisdom_gain
-    	print "{0} damage dealt, wisdom boosted by {1}.".format(damage, wisdom_gain)
+    	self.health += heal_amt
+    	print "{0} damage dealt, healed for {1}, wisdom boosted by {2}.".format(damage, heal_amt, wisdom_gain)
     	
     def f_health(self):
         print "You have {0} health remaining".format(self.health)
