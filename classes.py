@@ -205,6 +205,7 @@ class warrior:
     def f_abilities(self):
         print "Heroic Slash(1).  This ability does {0} to {1} damage".format(self.strength*2,self.strength*4)
         print "Combat Tactics(2). This ability boosts your damage output and crit chance for three turns."
+        print "Furious Barrage(3). Deals three swift strikes dealing {0} to {1} damage.".format(self.dexterity/2,(self.dexterity*2)+self.strength)
     def f_ability0(self):
     	if(self.tactics > 0):
     		bonus_damage = round(self.strength*1.5, 0)
@@ -231,7 +232,34 @@ class warrior:
     	self.tactics = 3
     	self.damage = 0;
     	print "You prepare your self for battle!"
-    #def f_ability2(self):
+    	
+    def f_ability2(self):
+    	damage = 0
+    	furious_bar = []
+    	bonus_damage = 0;
+    	if (self.tactics > 0):
+    		bonus_damage = self.dexterity/2
+    		crit_cap = 85
+    		self.tactics -= 1
+    	else:
+    		bonus_damage = 0;
+    		crit_cap = 100
+    	for i in range(0,3):
+    		crit = random.randrange(0,100)
+    		miss = random.randrange(0,crit_cap)
+    		if miss <= self.miss:
+    			temp_damage = 0
+    			furious_bar.append(temp_damage)
+    		elif crit <= self.crit:
+    			temp_damage = random.randrange(self.dexterity/2,((self.dexterity*2)+self.strength))*2+bonus_damage
+    			furious_bar.append(temp_damage)
+    		else:
+    			temp_damage = random.randrange(self.dexterity/2,(self.dexterity*2)+self.strength)+bonus_damage
+    			furious_bar.append(temp_damage)
+    	damage += furious_bar[0] + furious_bar[1] + furious_bar[2]
+    	self.damage = damage
+    	print "Your furious barrage of blows deal {0}, {1}, and {2} damage".format(furious_bar[0],furious_bar[1],furious_bar[2])
+    		
     def f_health(self):
         print "You have {0} health remaining".format(self.health)
     def f_level(self):
@@ -286,10 +314,9 @@ class cleric:
     def f_abilities(self):
         print "Holy Blow(1).  This ability does {0} to {1} damage.".format(self.strength+self.intellect,(self.strength + self.intellect)*3)
         print "Devine Judgment(2). This ability does {0} to {1} damage.".format(self.wisdom*2, self.wisdom*5)
-        print "You enter a state of devine empowerment" 
-        print "adding addition effects to your next attack."
-        print "Holy Blow will deal additional damage and Devine Judgment will heal you."
-        print "   "
+        print "You enter a state of devine empowerment adding addition effects to your next attack."
+        print "Holy Blow will deal additional damage, Devine Judgment will heal you, Devine Sagicity grants 2 wisdom."
+        print "Devine Sagicity(3) deals {0} damage and increases your wisdom by 1".format(self.wisdom)
     def f_ability0(self):
         damage = random.randrange((self.strength + self.intellect)*2,(self.strength + self.intellect)*3)
         crit = random.randrange(1,100)
@@ -328,8 +355,17 @@ class cleric:
     		self.damage = damage
     		print "Your Devine Judgment deals {0} damage.".format(self.damage)
     
-    #def f_ability2(self):
-    	
+    def f_ability2(self):
+    	damage = self.wisdom
+    	wisdom_gain = 1
+    	if (self.empowered):
+    		wisdom_gain = 2
+    		self.empowered = 0
+    	else:
+    		widsom_gain = 1
+    	self.damage = damage
+    	self.wisdom += wisdom_gain
+    	print "{0} damage dealt, wisdom boosted by {1}.".format(damage, wisdom_gain)
     	
     def f_health(self):
         print "You have {0} health remaining".format(self.health)
