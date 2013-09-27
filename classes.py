@@ -22,13 +22,14 @@ class warlock:
         self.xp = 0
         self.lvl = 1
     def f_displayStats(self):
-        print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
+        print "Class: ", self.cls, "\nName: ", self.name,"\nLevel: ",self.lvl, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
     def f_abilities(self):
         print "Power Siphon(1).  This ability does {0} to {1} damage".format((self.intellect+self.stamina*3/2),((self.intellect+self.stamina)*7/3))
-        print "Heals you for a portion of damage dealt"
+        print "Heals you for a portion of damage dealt\n"
         print "Entropic Assault(2). This ability does {0} to {1} damage".format((self.intellect+self.wisdom+self.stamina)/2,(self.intellect+self.wisdom+self.stamina)*7/2)
-        print "Consumes a portion of you current health. Even if you miss!"
+        print "Consumes a portion of you current health. Even if you miss!\n"
         print "Blood Armor(3). This ability sacrafices {0} health to create a {1} damage shield.".format(self.health*0.1,self.health*0.3)
+        print " "
     def f_ability0(self):
         damage = random.randrange(((self.intellect+self.stamina)*3/2),((self.intellect+self.stamina)*7/3))
         crit = random.randrange(1,100)
@@ -125,10 +126,11 @@ class mage:
         self.xp = 0
         self.lvl = 1
     def f_displayStats(self):
-        print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
+        print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ","\nLevel: ",self.lvl, self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
     def f_abilities(self):
-        print "Fireball(1).  This ability does {0} to {1} damage".format(self.intellect*2,self.intellect*7)
+        print "Fireball(1).  This ability does {0} to {1} damage.\n".format(self.intellect*2,self.intellect*7)
         print "Barrier(2). This ability creates a magical shield that absorbs {0} to {1} damage.".format(self.intellect+(self.wisdom/2),(self.intellect+(self.wisdom/2))*2)
+        print " "
     def f_ability0(self):
         damage = random.randrange(self.intellect*2,self.intellect*7)
         crit = random.randrange(1,100)
@@ -201,10 +203,11 @@ class warrior:
         self.xp = 0
         self.lvl = 1
     def f_displayStats(self):
-        print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
+        print "Class: ", self.cls, "\nName: ", self.name,"\nLevel: ",self.lvl, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
     def f_abilities(self):
-        print "Heroic Slash(1).  This ability does {0} to {1} damage".format(self.strength*2,self.strength*4)
+        print "Heroic Slash(1).  This ability does {0} to {1} damage.\n".format(self.strength*2,self.strength*4)
         print "Combat Tactics(2). This ability boosts your damage output and crit chance for three turns."
+        print " "
     def f_ability0(self):
     	if(self.tactics > 0):
     		bonus_damage = round(self.strength*1.5, 0)
@@ -229,7 +232,6 @@ class warrior:
     
     def f_ability1(self):
     	self.tactics = 3
-    	self.damage = 0;
     	print "You prepare your self for battle!"
     #def f_ability2(self):
     def f_health(self):
@@ -282,9 +284,9 @@ class cleric:
         self.xp = 0
         self.lvl = 1
     def f_displayStats(self):
-        print "Class: ", self.cls, "\nName: ", self.name, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
+        print "Class: ", self.cls, "\nName: ", self.name,"\nLevel: ",self.lvl, "\nStamina: ", self.stamina, "\nWisdom: ", self.wisdom, "\nIntellect: ",self.intellect, "\nDexterity: ",self.dexterity, "\nStrength: ",self.strength, "\nMiss: ",self.miss,"\nCrit: ",self.crit
     def f_abilities(self):
-        print "Holy Blow(1).  This ability does {0} to {1} damage.".format(self.strength+self.intellect,(self.strength + self.intellect)*3)
+        print "Holy Blow(1).  This ability does {0} to {1} damage.\n".format(self.strength+self.intellect,(self.strength + self.intellect)*3)
         print "Devine Judgment(2). This ability does {0} to {1} damage.".format(self.wisdom*2, self.wisdom*5)
         print "You enter a state of devine empowerment" 
         print "adding addition effects to your next attack."

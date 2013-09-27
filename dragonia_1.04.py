@@ -83,7 +83,7 @@ def main():
             try:
                 if g_no_enemy == True:
                     if g_enemies == []:
-                        print "You efforts have been valient, victory is yours!"
+                        print "You efforts have been valient, victory is yours!\n"
                         f_reset()
                         g_exit = True
                         player.dead = 1
