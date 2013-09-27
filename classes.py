@@ -73,6 +73,7 @@ class warlock:
             print "{0} health consumed.".format(sac_hp)
             
     def f_ability2(self):
+        self.damage = 0
     	sac_hp = self.health*0.1
     	sac_shield = self.health*0.3
     	self.health -= sac_hp
