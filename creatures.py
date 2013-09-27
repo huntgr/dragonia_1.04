@@ -100,15 +100,15 @@ class ogre:
         else:
             damage = random.randrange(17,30)
             print "The Ogre takes a swing with his club!"
-        if miss <= self.miss and ability != 1:
+        if miss <= self.miss and self.last == 0:
             self.damage = 0
             print "The ogre MISSES you completely!"
-        elif crit ==10 and ability != 1:
+        elif crit ==10 and self.last == 0:
             crit = damage*2
             self.damage = crit
             print "The ogre CRITS you for {0} damage".format(self.damage)
         else:
-            if ability != 1:
+            if self.last == 0:
                 self.damage = damage
                 print "The ogre {0} for {1} damage".format(self.dict[random.randrange(0,6)],self.damage)
     def f_health(self):
@@ -322,15 +322,15 @@ class giant_snake:
         else:
             damage = random.randrange(17,30)
             print "The Giant Snake attacks!"
-        if miss <= self.miss and ability != 1:
+        if miss <= self.miss and self.last == 0:
             self.damage = 0
             print "The giant snake MISSES you completely!"
-        elif crit ==10 and ability != 1:
+        elif crit ==10 and self.last == 0:
             crit = damage*2.5
             self.damage = crit
             print "The giant snake CRITS you for {0}".format(self.damage)
         else:
-            if ability != 1:
+            if self.last == 0:
                 self.damage = damage
                 print "The giant snake {0} for {1} damage".format(self.dict[random.randrange(0,6)],self.damage)
     def f_health(self):
