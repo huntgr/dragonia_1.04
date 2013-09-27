@@ -73,6 +73,8 @@ def f_attack(player,enemy):
         f_damage("f_ability0()",enemy,player)
     elif int(inpute) == 2:
         f_damage("f_ability1()",enemy,player)
+    elif int(inpute) == 3:
+        f_damage("f_ability2()",enemy,player)
     sys.stdout.flush()
             
 def f_dance():
