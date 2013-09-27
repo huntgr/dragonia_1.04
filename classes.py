@@ -320,7 +320,7 @@ class cleric:
         print "Devine Judgment(2). This ability does {0} to {1} damage.".format(self.wisdom*2, self.wisdom*5)
         print "You enter a state of devine empowerment adding addition effects to your next attack."
         print "Holy Blow will deal additional damage, Devine Judgment will heal you, Devine Sagicity grants 2 wisdom."
-        print "Devine Sagicity(3) deals {0} damage and increases your wisdom by 1".format(self.wisdom)
+        print "Devine Sagicity(3) deals {0} damage, heals, and increases your wisdom by 1".format(self.wisdom)
     def f_ability0(self):
         damage = random.randrange((self.strength + self.intellect)*2,(self.strength + self.intellect)*3)
         crit = random.randrange(1,100)
