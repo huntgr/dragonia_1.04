@@ -207,11 +207,8 @@ class warrior:
     def f_abilities(self):
         print "Heroic Slash(1).  This ability does {0} to {1} damage.\n".format(self.strength*2,self.strength*4)
         print "Combat Tactics(2). This ability boosts your damage output and crit chance for three turns."
-<<<<<<< HEAD
         print "Furious Barrage(3). Deals three swift strikes dealing {0} to {1} damage.".format(self.dexterity/2,(self.dexterity*2)+self.strength)
-=======
         print " "
->>>>>>> 0b4d9ba99f077e3cea5a77081b6767829170021d
     def f_ability0(self):
     	if(self.tactics > 0):
     		bonus_damage = round(self.strength*1.5, 0)
