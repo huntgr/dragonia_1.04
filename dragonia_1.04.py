@@ -23,7 +23,7 @@ g_exit = False
 g_running = True
 g_count = 0
 g_no_enemy = True
-g_enemies = ['ogre','giant snake','ogre','giant snake','ogre','giant snake','gargoyle','dragon']
+g_enemies = ['ogre','giant snake','ogre','cyclops','giant snake','ogre','giant snake','gargoyle','dragon']
 g_error_messages = ["Robin...no.","You think I'm going to listen to you?","um...what?","Yeah no clue what you're telling me to do.","Stop touching me there.","Will you attack already?","Glares at you.","Siiiiigh.", "You want me to do WHAT?","Sorry I don't roll that way","I would if I could.","NO..NO NO NO NO..NONONONONONONON!"]
 
 
@@ -41,12 +41,12 @@ def main():
         print "Welcome to Dragonia."
         print "\nPlease choose your class: Mage (1), Warrior (2), Cleric(3), Warlock(4)"
         f_reset()
-        print g_enemies
         #player.dead = 0
         g_chosen = False
         g_chosen = False
         g_no_enemy = True
-        g_enemies = ['ogre','giant snake','ogre','giant snake','ogre','giant snake','gargoyle','dragon']
+        g_enemies = ['ogre','giant snake','ogre','cyclops','giant snake','ogre','giant snake','gargoyle','dragon']
+        print g_enemies
         while g_chosen != True:
             g_exit = False
             
